@@ -1,4 +1,4 @@
-package com.panelaquente.dto;
+package com.panelaquente.panelaquente.dto;
 
 import com.panelaquente.panelaquente.model.Product.Category;
 

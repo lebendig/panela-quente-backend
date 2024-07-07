@@ -1,13 +1,16 @@
-package com.panelaquente.dto;
+package com.panelaquente.panelaquente.dto;
+
 
 import com.panelaquente.panelaquente.model.Product.Category;
-
 
 public class ProductDTOImp implements ProductDTO  {
 
     private Long id;
     private String name;   
     private Category category;
+
+    public ProductDTOImp() {
+    }
 
     public ProductDTOImp(Long id, String name, Category category) {
         this.id = id;
