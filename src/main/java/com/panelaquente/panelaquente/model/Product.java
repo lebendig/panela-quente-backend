@@ -1,7 +1,12 @@
 package com.panelaquente.panelaquente.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.panelaquente.panelaquente.converter.CategoryConverter;
+
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,6 +32,16 @@ public class Product {
         public String getValue(){
             return value;
         }
+
+        @JsonCreator
+        public static Category fromString(String key) {
+            return key == null ? null : Category.valueOf(key.toUpperCase());
+        }
+
+        @JsonValue
+        public String toValue() {
+            return name().toLowerCase();
+        }
     }
 
     @Id
@@ -36,7 +51,7 @@ public class Product {
     @Column
     private String name;   
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = CategoryConverter.class)
     private Category category; 
 
 }
